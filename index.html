@@ -4,6 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>LuxeWall — Luxury Wallpaper & Wall Décor Studio, Coimbatore</title>
 <meta name="description" content="LuxeWall is a luxury wallpaper and wall décor studio in R.S. Puram, Coimbatore.">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1709544345887-3b677acf8751?auto=format&fit=crop&w=1600&q=70" imagesrcset="https://images.unsplash.com/photo-1709544345887-3b677acf8751?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1709544345887-3b677acf8751?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1709544345887-3b677acf8751?auto=format&fit=crop&w=2400&q=70 2400w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&display=swap">
 <style>
@@ -48,15 +50,11 @@ h1,h2,h3{font-weight:300;letter-spacing:-.035em;line-height:1.02}
 .cur2{position:fixed;inset:0;z-index:150;background:var(--sand);transform:translateY(100%);pointer-events:none}.cur2.on{transform:none;transition:transform .65s var(--ease)}.cur2.off{transform:translateY(-100%);transition:transform .65s var(--ease)}
 /* ---------- HERO (Senawa-style) ---------- */
 .hero{position:relative;height:100svh;min-height:560px;background:#0e0d0b;color:#fff;overflow:hidden}
-.sl{position:absolute;inset:0;opacity:0;visibility:hidden}
-.sl img{transform:scale(1.001)}
-.sl.on{opacity:1;visibility:visible;z-index:2}.sl.out{visibility:visible;z-index:1;opacity:1}
-.sl.on img{animation:enter 1.8s var(--out) both}
-@keyframes enter{from{opacity:0;filter:blur(18px);transform:scale(1.09)}60%{filter:blur(2px)}to{opacity:1;filter:blur(0);transform:scale(1.001)}}
-.sl.on img.kb{animation:enter 1.8s var(--out) both,kb 9s linear 1.8s both}
-@keyframes kb{to{transform:scale(1.045)}}
-.sl.out img{animation:leave 1.6s var(--ease) both}
-@keyframes leave{to{opacity:0;filter:blur(10px);transform:scale(.98)}}
+.sl{position:absolute;inset:0;visibility:hidden;overflow:hidden;background:#0e0d0b}
+.sl img{will-change:transform,filter,opacity}
+.sl.on{visibility:visible;z-index:2}
+.hero.go .sl.on{animation:kb 9s cubic-bezier(.16,1,.3,1) both}
+@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.001)}}
 .hero:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.34),transparent 24%,transparent 52%,rgba(0,0,0,.62))}
 .hcopy{position:absolute;z-index:4;left:var(--g);bottom:clamp(150px,24vh,220px);max-width:720px}
 .hcopy h1{font-size:clamp(36px,5.6vw,88px);margin:14px 0}
@@ -137,21 +135,21 @@ body.page-elements .wa{display:none}
 <a class="wa" href="https://wa.me/918147844618?text=Hi%20LuxeWall%2C%20I%27d%20like%20to%20discuss%20a%20wallpaper%20project." target="_blank" rel="noopener">WhatsApp</a>
 
 <script>
-/* ===== IMAGES — real Unsplash photos (swap IDs freely; see credits in footer) =====
-   Format: unsplash.com/photos/<ID>/download?force=true&w=<width> */
+/* ===== IMAGES — free Unsplash photos served from images.unsplash.com (optimised: auto=format → WebP/AVIF, responsive srcset, lazy) =====
+   To swap a photo: paste the part after /photo- from its images.unsplash.com URL into id. */
 var PH={
- bedroom:{id:'RwTyLllHX44',by:'Baubauwall',alt:'Wallpapered bedroom'},
- hall:{id:'9OZfTe-y5T4',by:'Unsplash',alt:'Floral hallway wallpaper'},
- leaf:{id:'zp-BLlaYDUk',by:'Jason Hawke',alt:'Dark green leaf'},
- wall:{id:'Wa7s3CbCWRg',by:'Jay Skyler',alt:'Green leaf wall'},
- arch:{id:'bl2UtA0Z-hI',by:'Fer Troulik',alt:'Triangular archways'},
- beige:{id:'21HfS5KMGw0',by:'Annie Spratt',alt:'Beige abstract texture'},
- worn:{id:'LUpnX8_rJNY',by:'Annie Spratt',alt:'Weathered plaster'},
- wave:{id:'9_1dOepPRzQ',by:'Pawel Czerwinski',alt:'White wavy relief'},
- cream:{id:'-OyJd-2dhxk',by:'Pawel Czerwinski',alt:'Cream layered detail'}
+ bedroom:{id:'1709544345887-3b677acf8751',by:'Baubauwall Wallpapers',page:'RwTyLllHX44',alt:'Wallpapered bedroom with crane mural'},
+ leaf:{id:'1544005313-f220e3a25315',by:'Štefan Štefančík',page:'KIJYJLQlylI',alt:'Green leaf pattern'},
+ wall:{id:'1655179536892-45c49a0604d4',by:'Geovanny Moreno',page:'_X8Te3fhy1g',alt:'Leaf-covered wall'},
+ arch:{id:'1741077093597-4f45aead704b',by:'Fer Troulik',page:'bl2UtA0Z-hI',alt:'Triangular archway pattern'},
+ wave:{id:'1761854149912-54ced79870ec',by:'Pawel Czerwinski',page:'9_1dOepPRzQ',alt:'White sculpted relief'},
+ cream:{id:'1763897913930-d5e95521cb6d',by:'Pawel Czerwinski',page:'-OyJd-2dhxk',alt:'Cream layered texture'}
 };
-var U=function(k,w){return'https://unsplash.com/photos/'+PH[k].id+'/download?force=true&w='+(w||1200)};
-function im(k,w,pos,z,eager){return'<img src="'+U(k,w)+'" alt="'+PH[k].alt+'"'+(eager?'':' loading="lazy"')+' decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'"'+((pos||z)?' style="'+(pos?'object-position:'+pos+';':'')+(z?'scale:'+z:'')+'"':'')+'>'}
+PH.hall=PH.bedroom;PH.beige=PH.cream;PH.worn=PH.wave;
+var UB=function(k,w){return'https://images.unsplash.com/photo-'+PH[k].id+'?auto=format&fit=crop&w='+w+'&q=70'};
+function im(k,w,pos,z,eager){var W=[480,800,1200,1600,2400].filter(function(x){return x<=Math.max(w,800)*1.5||x<=w});
+ var set=W.map(function(x){return UB(k,x)+' '+x+'w'}).join(', ');
+ return'<img src="'+UB(k,w)+'" srcset="'+set+'" sizes="'+(w>=1600?'100vw':w>=1000?'(min-width:900px) 50vw,100vw':'(min-width:900px) 25vw,50vw')+'" alt="'+PH[k].alt+'"'+(eager?' fetchpriority="high"':' loading="lazy"')+' decoding="async" onerror="this.style.opacity=0"'+((pos||z)?' style="'+(pos?'object-position:'+pos+';':'')+(z?'scale:'+z:'')+'"':'')+'>'}
 var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
 var WA='918147844618',REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function wa(t){return'https://wa.me/'+WA+'?text='+encodeURIComponent(t)}
@@ -160,16 +158,16 @@ var P2=function(n){return String(n).padStart(2,'0')};
 /* ===== DATA ===== */
 var SL=[
  {n:'The Heritage Bedroom',t:'Residential',k:'bedroom'},
- {n:'The Floral Hallway',t:'Residential',k:'hall'},
  {n:'The Emerald Study',t:'Residential',k:'leaf'},
  {n:'The Green Atrium',t:'Commercial',k:'wall'},
- {n:'The Arch Gallery',t:'Hospitality',k:'arch'}];
+ {n:'The Arch Gallery',t:'Hospitality',k:'arch'},
+ {n:'The Quiet Suite',t:'Residential',k:'wave'}];
 var CO=[
- {n:'Natural Textures',d:'Linen, grasscloth, plaster and organic finishes.',k:'beige',pos:'50% 40%'},
- {n:'Botanical Collection',d:'Premium leaves, florals and nature-inspired designs.',k:'leaf',pos:'50% 50%'},
+ {n:'Natural Textures',d:'Linen, grasscloth, plaster and organic finishes.',k:'beige',pos:'20% 30%',z:1.6},
+ {n:'Botanical Collection',d:'Premium leaves, florals and nature-inspired designs.',k:'wall',pos:'50% 50%'},
  {n:'Contemporary Geometry',d:'Modern linework and sophisticated compositions.',k:'arch',pos:'50% 50%'},
- {n:'Marble & Stone',d:'Mineral veining, concrete and natural stone aesthetics.',k:'worn',pos:'50% 50%'},
- {n:'Heritage & Classic',d:'Timeless patterns, elegant motifs and traditional character.',k:'hall',pos:'50% 50%'},
+ {n:'Marble & Stone',d:'Mineral veining, concrete and natural stone aesthetics.',k:'worn',pos:'80% 70%',z:1.8},
+ {n:'Heritage & Classic',d:'Timeless patterns, elegant motifs and traditional character.',k:'hall',pos:'18% 60%',z:1.7},
  {n:'Sculpted Relief',d:'Soft dimensional surfaces that play with light.',k:'wave',pos:'50% 50%'},
  {n:'Quiet Neutrals',d:'Layered creams and warm ivories for calm rooms.',k:'cream',pos:'50% 50%'},
  {n:'Statement Murals',d:'Artistic wall murals and expressive compositions.',k:'bedroom',pos:'50% 50%'}];
@@ -187,18 +185,18 @@ var EL=[
 var V={};
 V.home=function(){
  var ix=CO.slice(0,6).map(function(c,i){return'<a href="#/collections" data-nav data-pv="'+i+'"><span>'+P2(i+1)+'</span><span class="t">'+c.n+'</span><span>'+c.d+'</span><span>View →</span></a>'}).join('');
- return'<section class="hero" id="hero"><div id="sls">'+SL.map(function(s,i){return'<div class="sl'+(i?'':' on')+'">'+im(s.k,2200,null,null,true)+'</div>'}).join('')+'</div>'+
+ return'<section class="hero" id="hero"><div id="sls">'+SL.map(function(s,i){return'<div class="sl'+(i?'':' on')+'">'+im(s.k,i?1600:2200,null,null,i===0)+'</div>'}).join('')+'</div>'+
  '<div class="hcopy" id="hcopy"><p class="up" style="opacity:.85">Wallpaper &amp; Interior Surfaces</p><h1><span class="ln"><span>Every wall</span></span><span class="ln"><span>tells a story.</span></span></h1><p>Thoughtfully curated wallpapers that bring texture, depth and character to exceptional spaces.</p><div class="cta"><a href="#/collections" data-nav>Explore collections →</a><a href="#/elements" data-nav>Elements →</a></div></div>'+
  '<div class="tabs" id="tabs">'+SL.map(function(s,i){return'<button class="tab'+(i?'':' on')+'" data-i="'+i+'"><b>'+s.n+'</b><span>'+s.t+' · Concept</span></button>'}).join('')+'</div><div class="bar"><i id="prog"></i></div></section>'+
  '<section class="sec"><div class="stmt"><h2 class="rv">Transforming walls into experiences.</h2><p class="rv">Curated wallpapers. Exceptional textures. Beautifully transformed spaces.</p></div></section>'+
  '<section class="sec" style="padding-top:0"><div class="lab"><span class="up">Collections</span><a class="up" href="#/collections" data-nav>All collections →</a></div><div class="idx" id="idx">'+ix+'</div></section>'+
  '<section class="sec"><div class="lab"><span class="up">Start a project</span><span class="sm">Tell us about your site</span></div><a class="next" href="#/contact" data-nav><h2 class="rv">Let’s transform your walls.</h2></a></section>'};
-V.collections=function(){return'<div class="pgh"><h1 class="rv">Collections</h1><p class="rv">Families of wallpaper, each opening into its own set of designs.</p></div><section class="sec" style="padding-top:0"><div class="cgrid">'+CO.map(function(c,i){return'<a class="cc" href="'+wa('Hi LuxeWall, I’d like to see the '+c.n+' collection.')+'" target="_blank" rel="noopener"><div class="cv"  style="aspect-ratio:4/5">'+im(c.k,900,c.pos)+'</div><div class="meta"><h3>'+c.n+'</h3><span class="sm">'+P2(i+1)+'</span></div><p>'+c.d+'</p></a>'}).join('')+'</div></section>'};
+V.collections=function(){return'<div class="pgh"><h1 class="rv">Collections</h1><p class="rv">Families of wallpaper, each opening into its own set of designs.</p></div><section class="sec" style="padding-top:0"><div class="cgrid">'+CO.map(function(c,i){return'<a class="cc" href="'+wa('Hi LuxeWall, I’d like to see the '+c.n+' collection.')+'" target="_blank" rel="noopener"><div class="cv"  style="aspect-ratio:4/5">'+im(c.k,900,c.pos,c.z)+'</div><div class="meta"><h3>'+c.n+'</h3><span class="sm">'+P2(i+1)+'</span></div><p>'+c.d+'</p></a>'}).join('')+'</div></section>'};
 V.studio=function(){return'<div class="pgh"><h1 class="rv"><span class="ln"><span>Spaces begin with</span></span><span class="ln"><span>the right surface.</span></span></h1></div><section class="sec" style="padding-top:0"><div class="two"><div style="grid-column:1/6"><p class="rv" style="color:var(--mute);font-size:17px;max-width:44ch">A thoughtfully selected wallcovering can completely transform the feeling of a space. From subtle natural textures to expressive statement walls, we help create interiors that feel distinctive, considered and timeless.</p><ul class="hl rv" style="margin-top:40px"><li>Premium wallpaper curation<span>01</span></li><li>Personalised design consultation<span>02</span></li><li>Professional installation<span>03</span></li><li>Pattern and texture guidance<span>04</span></li><li>Residential and commercial<span>05</span></li></ul></div><div style="grid-column:7/13"><div class="cv" style="aspect-ratio:4/5">'+im('hall',1200)+'</div></div></div></section>'};
 V.process=function(){return'<div class="pgh"><h1 class="rv">Process</h1><p class="rv">Four calm stages, from the first conversation to the final seam.</p></div><section class="sec" style="padding-top:0">'+ST.map(function(s,i){return'<div class="stp"><div class="n rv">'+P2(i+1)+'</div><div><h3 class="rv">'+s[0]+'</h3><p class="rv">'+s[1]+'</p></div><div class="cv">'+im(s[2],900)+'</div></div>'}).join('')+'</section>'};
 V.contact=function(){return'<div class="pgh"><h1 class="rv"><span class="ln"><span>Let’s transform</span></span><span class="ln"><span>your walls.</span></span></h1><p class="rv">Have a space in mind? Let’s find the wallpaper that brings it to life.</p></div><section class="sec" style="padding-top:0"><div class="two"><form class="frm" id="frm" style="grid-column:1/8"><label>Name<input name="n" required autocomplete="name"></label><label>Phone<input name="p" type="tel" required autocomplete="tel"></label><label>Email<input name="e" type="email"></label><label>Project type<select name="t"><option>Residential</option><option>Commercial</option><option>Hospitality</option></select></label><label class="full">Message<textarea name="m"></textarea></label><div class="full"><button class="btn" type="submit" style="width:100%;max-width:340px">Start Your Project <span>→</span></button><p class="sm" style="margin-top:10px">Opens WhatsApp with your details.</p></div></form><div style="grid-column:9/13"><p class="up sm" style="margin-bottom:8px">Studio</p><p>R.S. Puram, Coimbatore<br>Tamil Nadu, India</p><p class="up sm" style="margin:28px 0 8px">Connect</p><p><a href="tel:+918147844618">+91 81478 44618</a><br><a href="mailto:info@luxewallsstudio.com">info@luxewallsstudio.com</a></p></div></div></section>'};
 V.elements=function(){return'<div class="el" id="el"><div class="elgrid" id="elgrid"></div><div class="elttl"><h1>Elements</h1><p>Textures, materials and patterns. Hover a point to open it.</p></div>'+EL.map(function(e,i){return'<button class="node" data-e="'+i+'" style="left:'+e.x+'%;top:'+e.y+'%" aria-label="'+e.l+'"><i></i><em>'+e.l+'</em></button>'}).join('')+'<div class="elnote">Index of surfaces</div></div>'};
-var CR=Object.keys(PH).map(function(k){return'<a href="https://unsplash.com/photos/'+PH[k].id+'" target="_blank" rel="noopener">'+PH[k].by+'</a>'}).join(' · ');
+var CR=['bedroom','leaf','wall','arch','wave','cream'].map(function(k){return'<a href="https://unsplash.com/photos/'+PH[k].page+'" target="_blank" rel="noopener">'+PH[k].by+'</a>'}).join(' · ');
 function footer(){return'<footer class="ft"><div><div class="big">LUXEWALL</div><p>Wallpaper. Texture. Timeless spaces.</p></div><div><h4>Index</h4><ul><li><a href="#/collections" data-nav>Collections</a></li><li><a href="#/studio" data-nav>Studio</a></li><li><a href="#/process" data-nav>Process</a></li><li><a href="#/elements" data-nav>Elements</a></li><li><a href="#/contact" data-nav>Contact</a></li></ul></div><div><h4>Studio</h4><p>R.S. Puram, Coimbatore<br>Tamil Nadu, India<br><span class="sm">By appointment</span></p></div><div><h4>Connect</h4><ul><li><a href="mailto:info@luxewallsstudio.com">Email</a></li><li><a href="https://wa.me/'+WA+'" target="_blank" rel="noopener">WhatsApp</a></li></ul></div><div class="bot"><span>© 2026 LuxeWall Studio</span><span>Photography via Unsplash: '+CR+'</span></div></footer>'}
 
 /* ===== ROUTER ===== */
@@ -218,25 +216,33 @@ document.addEventListener('click',function(e){var a=e.target.closest('a[data-nav
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
 function bind(){$$('.rv,.cv,.stmt h2,.pgh h1').forEach(function(el){io.observe(el)});
  var f=$('#frm');if(f)f.onsubmit=function(e){e.preventDefault();var x=f.elements;window.open(wa('Hi LuxeWall, I’m '+x.n.value+' ('+x.p.value+(x.e.value?', '+x.e.value:'')+'). Project: '+x.t.value+'. '+x.m.value),'_blank')};
- var pv=$('#pv');$$('.idx a[data-pv]').forEach(function(a){a.addEventListener('mouseenter',function(){var c=CO[a.dataset.pv];pv.innerHTML=im(c.k,600,c.pos,null,true);pv.classList.add('on')});a.addEventListener('mouseleave',function(){pv.classList.remove('on')})});
+ var pv=$('#pv');$$('.idx a[data-pv]').forEach(function(a){a.addEventListener('mouseenter',function(){var c=CO[a.dataset.pv];pv.innerHTML=im(c.k,600,c.pos,c.z,true);pv.classList.add('on')});a.addEventListener('mouseleave',function(){pv.classList.remove('on')})});
  $$('.pgh').forEach(function(p){p.classList.add('in')})}
 var mx=0,my=0,cx=0,cy=0;addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
 (function loop(){cx+=(mx-cx)*.18;cy+=(my-cy)*.18;var p=$('#pv');p.style.left=cx+'px';p.style.top=cy+'px';requestAnimationFrame(loop)})();
 
 /* ===== HERO: blur-bloom crossfade, tab list, progress line ===== */
 function hero(){
- var sl=$$('.sl'),tabs=$$('.tab'),cur=0,n=sl.length,D=6500,start=Date.now(),lock=false,pg=$('#prog');
+ var h=$('#hero'),sl=$$('.sl'),tabs=$$('.tab'),cur=0,n=sl.length,D=6500,start=Date.now(),lock=false,pg=$('#prog'),E='cubic-bezier(.65,0,.35,1)';
+ sl[0].style.visibility='visible';
  function show(i){if(lock||i===cur)return;lock=true;var o=sl[cur],nw=sl[i];
-  sl.forEach(function(s){s.classList.remove('out')});o.classList.remove('on');o.classList.add('out');nw.classList.add('on');
-  tabs.forEach(function(t,j){t.classList.toggle('on',j===i)});cur=i;start=Date.now();
-  setTimeout(function(){o.classList.remove('out');lock=false},REDUCE?0:1700)}
+  tabs.forEach(function(t,j){t.classList.toggle('on',j===i)});
+  if(REDUCE){o.classList.remove('on');o.style.visibility='hidden';nw.classList.add('on');nw.style.visibility='visible';cur=i;start=Date.now();lock=false;return}
+  /* old slide stays fully visible underneath; new one blooms in on top (blur→sharp, zoom-out, fade) */
+  o.style.zIndex=2;nw.style.zIndex=3;nw.style.visibility='visible';nw.classList.add('on');
+  var D1=1500,a1=nw.animate([{opacity:0},{opacity:1}],{duration:D1,easing:E,fill:'both'});
+  var im=nw.querySelector('img'),oi=o.querySelector('img');
+  im.animate([{filter:'blur(18px)',transform:'scale(1.12)'},{filter:'blur(0px)',transform:'scale(1)'}],{duration:D1+500,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'});
+  oi.animate([{transform:'scale(1)',filter:'blur(0px)'},{transform:'scale(1.06)',filter:'blur(4px)'}],{duration:D1,easing:E,fill:'both'});
+  cur=i;start=Date.now();
+  a1.onfinish=function(){o.classList.remove('on');o.style.visibility='hidden';o.style.zIndex='';nw.style.zIndex='';o.getAnimations().forEach(function(x){x.cancel()});oi.getAnimations().forEach(function(x){x.cancel()});lock=false}}
  tabs.forEach(function(t){t.onclick=function(){show(+t.dataset.i)}});
- var tx=0,h=$('#hero');h.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});h.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show((cur+(d<0?1:n-1))%n)});
- var kk=function(e){if(e.key==='ArrowRight')show((cur+1)%n);if(e.key==='ArrowLeft')show((cur-1+n)%n)};document.addEventListener('keydown',kk);
+ var tx=0;h.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});h.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show((cur+(d<0?1:n-1))%n)});
+ var kk=function(e){if(/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;if(e.key==='ArrowRight')show((cur+1)%n);if(e.key==='ArrowLeft')show((cur-1+n)%n)};document.addEventListener('keydown',kk);
  cleanup=function(){document.removeEventListener('keydown',kk)};
- timers.push(setInterval(function(){if(document.hidden||document.body.classList.contains('open-menu')||document.body.classList.contains('open-search'))start=Date.now();var p=Math.min(1,(Date.now()-start)/D);pg.style.transform='scaleX('+p+')';if(p>=1&&!REDUCE)show((cur+1)%n)},50));
- if(!$('#pre').classList.contains('gone'))return;heroIn()}
-function heroIn(){var h=$('#hcopy');if(h)h.classList.add('in')}
+ timers.push(setInterval(function(){var held=!h.classList.contains('go')||document.hidden||document.body.classList.contains('open-menu')||document.body.classList.contains('open-search');if(held)start=Date.now();var p=Math.min(1,(Date.now()-start)/D);pg.style.transform='scaleX('+p+')';if(p>=1&&!REDUCE)show((cur+1)%n)},40));
+ if($('#pre').classList.contains('gone'))heroIn()}
+function heroIn(){var h=$('#hero');if(!h)return;h.classList.add('go');var c=$('#hcopy');if(c)c.classList.add('in')}
 
 /* ===== ELEMENTS: dots → grid appears → images bloom into cells ===== */
 function elements(){
@@ -269,7 +275,7 @@ $('#bMenu').onclick=function(){document.body.classList.contains('open-menu')||do
 $('#bSearch').onclick=function(){document.body.classList.contains('open-search')?closeAll():openSearch()};
 $('#shade').onclick=closeAll;
 function doSearch(){var q=$('#q').value.trim().toLowerCase();var out=CO.filter(function(c){return!q||(c.n+' '+c.d).toLowerCase().indexOf(q)>-1});
- $('#res').innerHTML=out.length?out.map(function(c){return'<a href="#/collections" data-nav><div class="ph">'+im(c.k,500,c.pos,null,true)+'</div><p>'+c.n+'<small>Collection</small></p></a>'}).join(''):'<p class="sm">No results for “'+q+'”.</p>'}
+ $('#res').innerHTML=out.length?out.map(function(c){return'<a href="#/collections" data-nav><div class="ph">'+im(c.k,500,c.pos,c.z,true)+'</div><p>'+c.n+'<small>Collection</small></p></a>'}).join(''):'<p class="sm">No results for “'+q+'”.</p>'}
 $('#q').addEventListener('input',doSearch);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();if(e.key==='/'&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();openSearch()}});
 
