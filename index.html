@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LuxeWall — Luxury Wallpaper & Wall Décor Studio, Coimbatore</title>
+<meta name="description" content="LuxeWall is a luxury wallpaper and wall décor studio in R.S. Puram, Coimbatore.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&display=swap">
+<style>
+:root{--bg:#F4F0E8;--ink:#1c1b19;--mute:#7d776d;--line:rgba(28,27,25,.14);--sand:#E5DCCD;--ease:cubic-bezier(.76,0,.24,1);--out:cubic-bezier(.16,1,.3,1);--g:clamp(18px,3vw,44px);--f:"Inter Tight","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}button{background:none;border:0;cursor:pointer}ul{list-style:none}
+h1,h2,h3{font-weight:300;letter-spacing:-.035em;line-height:1.02}
+.up{text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:500}.sm{font-size:12px;color:var(--mute)}
+:focus-visible{outline:1px solid currentColor;outline-offset:4px}
+/* header */
+.hd{position:fixed;inset:0 0 auto;z-index:90;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:calc(18px + env(safe-area-inset-top,0px)) var(--g) 18px;color:#fff;pointer-events:none;transition:color .5s}
+.hd.ink{color:var(--ink)}.hd>*{pointer-events:auto}
+.logo{font-weight:400;letter-spacing:.42em;font-size:14px;margin-right:-.42em}
+.ib{width:44px;height:44px;display:grid;place-items:center;margin-left:-12px}
+.ib.r{justify-self:end;margin:0 -12px 0 0}
+.burger{width:20px;height:9px;position:relative}.burger i{position:absolute;left:0;right:0;height:1px;background:currentColor;transition:transform .5s var(--out),top .5s var(--out)}.burger i:first-child{top:0}.burger i:last-child{top:8px}
+.open-menu .burger i:first-child{top:4px;transform:rotate(45deg)}.open-menu .burger i:last-child{top:4px;transform:rotate(-45deg)}
+/* side menu (frosted) */
+.shade{position:fixed;inset:0;z-index:70;background:rgba(20,18,15,.28);opacity:0;visibility:hidden;transition:opacity .6s,visibility 0s .6s}
+.open-menu .shade{opacity:1;visibility:visible;transition:opacity .6s}
+.side{position:fixed;z-index:80;left:0;top:0;bottom:0;width:min(380px,86vw);padding:calc(96px + env(safe-area-inset-top,0px)) var(--g) 30px;display:flex;flex-direction:column;background:rgba(244,240,232,.62);backdrop-filter:blur(26px) saturate(1.1);-webkit-backdrop-filter:blur(26px) saturate(1.1);color:var(--ink);transform:translateX(-102%);transition:transform .9s var(--ease)}
+.open-menu .side{transform:none}
+.side h4{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--mute);margin-bottom:18px}
+.side nav a,.side nav button{display:block;font-size:24px;letter-spacing:-.02em;font-weight:300;padding:6px 0;opacity:0;transform:translateX(-14px);transition:opacity .6s var(--out),transform .8s var(--out),color .3s;text-align:left;width:100%}
+.open-menu .side nav>*{opacity:1;transform:none}
+.side nav>*:nth-child(2){transition-delay:.05s}.side nav>*:nth-child(3){transition-delay:.1s}.side nav>*:nth-child(4){transition-delay:.15s}.side nav>*:nth-child(5){transition-delay:.2s}.side nav>*:nth-child(6){transition-delay:.25s}.side nav>*:nth-child(7){transition-delay:.3s}
+.side nav:hover>*{color:rgba(28,27,25,.38)}.side nav>*:hover{color:var(--ink)}
+.side .foot{margin-top:auto;font-size:11px;line-height:1.7;color:var(--ink)}.side .foot span{color:var(--mute);letter-spacing:.08em;text-transform:uppercase;font-size:10px}
+/* search */
+.srch{position:fixed;inset:0;z-index:85;background:var(--bg);overflow:auto;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .9s var(--ease),visibility 0s .9s;padding:calc(110px + env(safe-area-inset-top,0px)) var(--g) 60px}
+.open-search .srch{clip-path:inset(0);visibility:visible;transition:clip-path .9s var(--ease)}
+.srch input{width:100%;background:none;border:0;border-bottom:1px solid var(--ink);padding:14px 0;font-size:clamp(24px,4vw,52px);font-weight:300;letter-spacing:-.03em;outline:none}
+.res{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:22px 14px;margin-top:34px}.res p{margin-top:8px;font-size:14px}.res small{display:block;color:var(--mute);font-size:12px}
+.ph{aspect-ratio:4/5;background:var(--sand);overflow:hidden;position:relative}.ph img{transition:scale 1.2s var(--out)}.res a:hover img,.cc:hover img,.dc:hover img{scale:1.05}
+/* curtain / preloader */
+.pre{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-items:center;transition:transform 1.1s var(--ease)}.pre.done{transform:translateY(-100%)}
+.pre .logo{overflow:hidden}.pre .logo span{display:block;animation:up 1s var(--out) both}@keyframes up{from{transform:translateY(105%)}}
+.pre .cnt{position:absolute;left:var(--g);bottom:var(--g);font-size:12px;letter-spacing:.1em;color:var(--mute)}
+.cur2{position:fixed;inset:0;z-index:150;background:var(--sand);transform:translateY(100%);pointer-events:none}.cur2.on{transform:none;transition:transform .65s var(--ease)}.cur2.off{transform:translateY(-100%);transition:transform .65s var(--ease)}
+/* ---------- HERO (Senawa-style) ---------- */
+.hero{position:relative;height:100svh;min-height:560px;background:#0e0d0b;color:#fff;overflow:hidden}
+.sl{position:absolute;inset:0;opacity:0;visibility:hidden}
+.sl img{transform:scale(1.001)}
+.sl.on{opacity:1;visibility:visible;z-index:2}.sl.out{visibility:visible;z-index:1;opacity:1}
+.sl.on img{animation:enter 1.8s var(--out) both}
+@keyframes enter{from{opacity:0;filter:blur(18px);transform:scale(1.09)}60%{filter:blur(2px)}to{opacity:1;filter:blur(0);transform:scale(1.001)}}
+.sl.on img.kb{animation:enter 1.8s var(--out) both,kb 9s linear 1.8s both}
+@keyframes kb{to{transform:scale(1.045)}}
+.sl.out img{animation:leave 1.6s var(--ease) both}
+@keyframes leave{to{opacity:0;filter:blur(10px);transform:scale(.98)}}
+.hero:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.34),transparent 24%,transparent 52%,rgba(0,0,0,.62))}
+.hcopy{position:absolute;z-index:4;left:var(--g);bottom:clamp(150px,24vh,220px);max-width:720px}
+.hcopy h1{font-size:clamp(36px,5.6vw,88px);margin:14px 0}
+.ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}.ln>span{display:block;transform:translateY(108%);transition:transform 1.3s var(--out)}.in .ln>span{transform:none}.ln:nth-child(2)>span{transition-delay:.1s}
+.hcopy p{opacity:.88;max-width:42ch}
+.tabs{position:absolute;z-index:5;left:var(--g);right:var(--g);bottom:calc(26px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.tab{text-align:center;opacity:.42;transition:opacity .6s;padding:10px 4px;min-height:44px}
+.tab b{display:block;font-weight:400;font-size:13px}.tab span{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-top:2px}
+.tab:hover{opacity:.8}.tab.on{opacity:1}
+.bar{position:absolute;z-index:5;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.18)}.bar i{display:block;height:100%;width:100%;background:#fff;transform:scaleX(0);transform-origin:left}
+.cta{display:flex;gap:26px;margin-top:22px;font-size:14px}.cta a{border-bottom:1px solid rgba(255,255,255,.5);padding:4px 0;transition:.4s}.cta a:hover{border-color:#fff;padding-right:10px}
+@media(max-width:700px){.tabs{grid-template-columns:repeat(5,minmax(96px,1fr));overflow-x:auto;scrollbar-width:none;left:0;right:0;padding:0 var(--g)}.tab span{display:none}.hcopy{bottom:150px}}
+/* sections */
+.sec{padding:clamp(70px,10vw,150px) var(--g)}
+.lab{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:14px;margin-bottom:clamp(28px,4vw,56px)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s var(--out),transform 1.1s var(--out)}.rv.in{opacity:1;transform:none}
+.stmt{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--g)}.stmt h2{grid-column:1/10;font-size:clamp(34px,6vw,98px)}.stmt p{grid-column:7/13;margin-top:30px;color:var(--mute);font-size:16px;max-width:46ch}
+@media(max-width:800px){.stmt h2,.stmt p{grid-column:1/-1}}
+.cv{overflow:hidden;position:relative;background:var(--sand)}.cv>img{clip-path:inset(100% 0 0 0);transition:clip-path 1.3s var(--ease)}.cv.in>img{clip-path:inset(0)}
+.idx a{display:grid;grid-template-columns:60px 1.4fr 1fr 90px;gap:16px;align-items:baseline;padding:20px 0;border-top:1px solid var(--line);transition:padding .5s var(--out),opacity .3s}.idx a:last-child{border-bottom:1px solid var(--line)}
+.idx .t{font-size:clamp(22px,2.8vw,40px);letter-spacing:-.03em;font-weight:300}.idx span{color:var(--mute);font-size:13px}.idx .t{color:var(--ink)}
+.idx:hover a{opacity:.35}.idx a:hover{opacity:1;padding-left:14px}
+@media(max-width:700px){.idx a{grid-template-columns:40px 1fr}.idx a span:nth-child(3),.idx a span:nth-child(4){display:none}}
+.pv{position:fixed;left:0;top:0;z-index:60;width:clamp(200px,22vw,320px);aspect-ratio:4/5;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.85);transition:opacity .35s,transform .5s var(--out);overflow:hidden;background:var(--sand)}.pv.on{opacity:1;transform:translate(-50%,-50%) scale(1)}.pv img{position:absolute;inset:0}
+@media(hover:none){.pv{display:none}}
+.pgh{padding:calc(140px + env(safe-area-inset-top,0px)) var(--g) clamp(30px,5vw,70px)}.pgh h1{font-size:clamp(44px,9vw,150px)}.pgh p{margin-top:24px;color:var(--mute);max-width:48ch;font-size:16px}
+.cgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(30px,4vw,60px) var(--g)}
+.cc{display:block;grid-column:span 6}.cc:nth-child(4n+1){grid-column:1/6}.cc:nth-child(4n+2){grid-column:7/13;margin-top:clamp(0px,8vw,140px)}.cc:nth-child(4n+3){grid-column:2/7}.cc:nth-child(4n+4){grid-column:8/13;margin-top:clamp(0px,6vw,100px)}
+.cc .cv{aspect-ratio:4/5}.cc .cv img{transition:clip-path 1.3s var(--ease),scale 1.2s var(--out)}.cc .meta{display:flex;justify-content:space-between;margin-top:14px}.cc h3{font-size:clamp(22px,2.4vw,34px)}.cc p{color:var(--mute);font-size:14px;margin-top:4px;max-width:40ch}
+@media(max-width:800px){.cc{grid-column:1/-1!important;margin-top:0!important}}
+.stp{border-top:1px solid var(--line);display:grid;grid-template-columns:120px 1fr 1fr;gap:var(--g);padding:clamp(34px,5vw,70px) 0;align-items:start}.stp .n{font-size:clamp(50px,7vw,110px);font-weight:300;letter-spacing:-.05em;line-height:.9;color:#b3a48c}.stp h3{font-size:clamp(30px,4vw,60px)}.stp p{color:var(--mute);max-width:40ch;margin-top:14px}.stp .cv{aspect-ratio:4/3}
+@media(max-width:800px){.stp{grid-template-columns:1fr}}
+.two{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--g)}.hl{border-top:1px solid var(--line)}.hl li{padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.hl li span{color:var(--mute)}
+@media(max-width:800px){.two>*{grid-column:1/-1!important}}
+.frm{display:grid;grid-template-columns:1fr 1fr;gap:26px var(--g)}.frm label{display:grid;gap:6px;font-size:12px;color:var(--mute)}.frm .full{grid-column:1/-1}
+.frm input,.frm select,.frm textarea{width:100%;border:0;border-bottom:1px solid var(--line);background:none;padding:10px 0;font-size:16px;color:var(--ink);border-radius:0;outline:none;min-height:44px}.frm input:focus,.frm select:focus,.frm textarea:focus{border-color:var(--ink)}.frm textarea{min-height:110px}
+@media(max-width:700px){.frm{grid-template-columns:1fr}}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:30px;min-height:52px;padding:0 22px;border:1px solid var(--ink);font-size:14px;transition:.4s;background:var(--ink);color:var(--bg)}.btn:hover{background:transparent;color:var(--ink)}
+.next{display:block}.next h2{font-size:clamp(40px,8vw,130px);transition:padding .6s var(--out)}.next:hover h2{padding-left:.3em}
+.ft{border-top:1px solid var(--line);padding:clamp(50px,7vw,100px) var(--g) calc(26px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--g)}
+.ft h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500;margin-bottom:14px}.ft li{padding:3px 0}.ft a:hover{opacity:.55}.ft .big{font-size:clamp(34px,5vw,76px);font-weight:300;letter-spacing:-.04em;line-height:1}.ft .big+p{margin-top:16px;color:var(--mute)}
+.ft .bot{grid-column:1/-1;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:50px;font-size:12px;color:var(--mute)}
+@media(max-width:800px){.ft{grid-template-columns:1fr 1fr}.ft>div:first-child{grid-column:1/-1}}
+.wa{position:fixed;z-index:60;right:var(--g);bottom:calc(16px + env(safe-area-inset-bottom,0px));min-height:44px;padding:0 18px;display:flex;align-items:center;background:var(--ink);color:var(--bg);font-size:13px;border-radius:40px;transition:opacity .4s}
+.home:not(.past) .wa{opacity:0;pointer-events:none}
+/* ---------- ELEMENTS (index of dots + grid reveal) ---------- */
+.el{position:fixed;inset:0;background:var(--bg);overflow:hidden;z-index:5}
+.elgrid{position:absolute;inset:0;opacity:0;transition:opacity .7s;pointer-events:none;background-image:linear-gradient(to right,rgba(28,27,25,.13) 1px,transparent 1px),linear-gradient(to bottom,rgba(28,27,25,.13) 1px,transparent 1px)}
+.el.live .elgrid{opacity:1}
+.elimg{position:absolute;overflow:hidden;opacity:0;filter:blur(18px);transform:scale(1.06);transition:opacity .8s var(--out),filter .9s var(--out),transform 1.1s var(--out);pointer-events:none;background:var(--sand)}
+.elimg.in{opacity:1;filter:blur(0);transform:none}
+.node{position:absolute;z-index:3;width:60px;height:60px;margin:-30px 0 0 -30px;display:grid;place-items:center;cursor:pointer}
+.node i{width:5px;height:5px;border-radius:50%;background:var(--ink);transition:transform .5s var(--out)}
+.node em{position:absolute;left:50%;top:50%;margin:14px 0 0 -4px;white-space:nowrap;font-style:normal;font-size:11px;letter-spacing:.02em;color:var(--ink);transform:translateX(-50%);transition:opacity .4s}
+.node:hover i,.node.act i{transform:scale(2.4)}
+.el.live .node:not(.act) em{opacity:.35}
+.elnote{position:absolute;left:var(--g);bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:4;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.elttl{position:absolute;z-index:4;left:var(--g);top:calc(120px + env(safe-area-inset-top,0px));pointer-events:none}.elttl h1{font-size:clamp(28px,3.4vw,52px)}.elttl p{color:var(--mute);margin-top:8px;font-size:13px;max-width:30ch}
+body.page-elements .wa{display:none}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}.rv,.ln>span{opacity:1;transform:none}.cv>img{clip-path:none}}
+</style></head>
+<body>
+<div class="pre" id="pre"><div class="logo"><span>LUXEWALL</span></div><div class="cnt" id="cnt">000</div></div>
+<div class="cur2" id="cur2"></div>
+<header class="hd" id="hd">
+ <button class="ib" id="bMenu" aria-label="Menu" aria-expanded="false"><span class="burger"><i></i><i></i></span></button>
+ <a class="logo" href="#/" data-nav>LUXEWALL</a>
+ <button class="ib r" id="bSearch" aria-label="Search"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1"><circle cx="7.6" cy="7.6" r="5.6"/><path d="M12 12l4.6 4.6"/></svg></button>
+</header>
+<div class="shade" id="shade"></div>
+<aside class="side" id="side" aria-label="Menu"><h4>Menu</h4>
+ <nav id="snav"></nav>
+ <div class="foot"><span>Studio</span><br>R.S. Puram, Coimbatore<br>Tamil Nadu, India<br><a href="mailto:info@luxewallsstudio.com">info@luxewallsstudio.com</a></div>
+</aside>
+<div class="srch" id="srch"><input id="q" type="search" placeholder="Search wallpapers, textures, collections…" autocomplete="off" aria-label="Search"><div class="res" id="res"></div></div>
+<div class="pv" id="pv"><img alt=""></div>
+<main id="app"></main>
+<a class="wa" href="https://wa.me/918147844618?text=Hi%20LuxeWall%2C%20I%27d%20like%20to%20discuss%20a%20wallpaper%20project." target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+/* ===== IMAGES — real Unsplash photos (swap IDs freely; see credits in footer) =====
+   Format: unsplash.com/photos/<ID>/download?force=true&w=<width> */
+var PH={
+ bedroom:{id:'RwTyLllHX44',by:'Baubauwall',alt:'Wallpapered bedroom'},
+ hall:{id:'9OZfTe-y5T4',by:'Unsplash',alt:'Floral hallway wallpaper'},
+ leaf:{id:'zp-BLlaYDUk',by:'Jason Hawke',alt:'Dark green leaf'},
+ wall:{id:'Wa7s3CbCWRg',by:'Jay Skyler',alt:'Green leaf wall'},
+ arch:{id:'bl2UtA0Z-hI',by:'Fer Troulik',alt:'Triangular archways'},
+ beige:{id:'21HfS5KMGw0',by:'Annie Spratt',alt:'Beige abstract texture'},
+ worn:{id:'LUpnX8_rJNY',by:'Annie Spratt',alt:'Weathered plaster'},
+ wave:{id:'9_1dOepPRzQ',by:'Pawel Czerwinski',alt:'White wavy relief'},
+ cream:{id:'-OyJd-2dhxk',by:'Pawel Czerwinski',alt:'Cream layered detail'}
+};
+var U=function(k,w){return'https://unsplash.com/photos/'+PH[k].id+'/download?force=true&w='+(w||1200)};
+function im(k,w,pos,z,eager){return'<img src="'+U(k,w)+'" alt="'+PH[k].alt+'"'+(eager?'':' loading="lazy"')+' decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'"'+((pos||z)?' style="'+(pos?'object-position:'+pos+';':'')+(z?'scale:'+z:'')+'"':'')+'>'}
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
+var WA='918147844618',REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function wa(t){return'https://wa.me/'+WA+'?text='+encodeURIComponent(t)}
+var P2=function(n){return String(n).padStart(2,'0')};
+
+/* ===== DATA ===== */
+var SL=[
+ {n:'The Heritage Bedroom',t:'Residential',k:'bedroom'},
+ {n:'The Floral Hallway',t:'Residential',k:'hall'},
+ {n:'The Emerald Study',t:'Residential',k:'leaf'},
+ {n:'The Green Atrium',t:'Commercial',k:'wall'},
+ {n:'The Arch Gallery',t:'Hospitality',k:'arch'}];
+var CO=[
+ {n:'Natural Textures',d:'Linen, grasscloth, plaster and organic finishes.',k:'beige',pos:'50% 40%'},
+ {n:'Botanical Collection',d:'Premium leaves, florals and nature-inspired designs.',k:'leaf',pos:'50% 50%'},
+ {n:'Contemporary Geometry',d:'Modern linework and sophisticated compositions.',k:'arch',pos:'50% 50%'},
+ {n:'Marble & Stone',d:'Mineral veining, concrete and natural stone aesthetics.',k:'worn',pos:'50% 50%'},
+ {n:'Heritage & Classic',d:'Timeless patterns, elegant motifs and traditional character.',k:'hall',pos:'50% 50%'},
+ {n:'Sculpted Relief',d:'Soft dimensional surfaces that play with light.',k:'wave',pos:'50% 50%'},
+ {n:'Quiet Neutrals',d:'Layered creams and warm ivories for calm rooms.',k:'cream',pos:'50% 50%'},
+ {n:'Statement Murals',d:'Artistic wall murals and expressive compositions.',k:'bedroom',pos:'50% 50%'}];
+var ST=[['Discover','Understand your space, requirements and design preferences.','worn'],['Curate','Explore wallpaper collections, textures and patterns.','leaf'],['Prepare','Measurements, surface preparation and installation planning.','beige'],['Transform','Professional installation with attention to alignment and finishing.','bedroom']];
+/* Elements: dot position (% of screen), label, images that bloom on the grid */
+var EL=[
+ {x:46,y:23,l:'(grasscloth)',im:['beige','cream','wave','worn','hall','arch']},
+ {x:76,y:34,l:'(botanical)',im:['leaf','wall','hall','beige','arch','cream']},
+ {x:23,y:42,l:'(plaster)',im:['worn','beige','wave','cream','arch','wall']},
+ {x:60,y:57,l:'(gilt & heritage)',im:['hall','bedroom','cream','worn','leaf','wave']},
+ {x:87,y:70,l:'(sculpted relief)',im:['wave','cream','beige','arch','worn','hall']},
+ {x:33,y:76,l:'(statement mural)',im:['bedroom','wall','leaf','hall','arch','beige']}];
+
+/* ===== VIEWS ===== */
+var V={};
+V.home=function(){
+ var ix=CO.slice(0,6).map(function(c,i){return'<a href="#/collections" data-nav data-pv="'+i+'"><span>'+P2(i+1)+'</span><span class="t">'+c.n+'</span><span>'+c.d+'</span><span>View →</span></a>'}).join('');
+ return'<section class="hero" id="hero"><div id="sls">'+SL.map(function(s,i){return'<div class="sl'+(i?'':' on')+'">'+im(s.k,2200,null,null,true)+'</div>'}).join('')+'</div>'+
+ '<div class="hcopy" id="hcopy"><p class="up" style="opacity:.85">Wallpaper &amp; Interior Surfaces</p><h1><span class="ln"><span>Every wall</span></span><span class="ln"><span>tells a story.</span></span></h1><p>Thoughtfully curated wallpapers that bring texture, depth and character to exceptional spaces.</p><div class="cta"><a href="#/collections" data-nav>Explore collections →</a><a href="#/elements" data-nav>Elements →</a></div></div>'+
+ '<div class="tabs" id="tabs">'+SL.map(function(s,i){return'<button class="tab'+(i?'':' on')+'" data-i="'+i+'"><b>'+s.n+'</b><span>'+s.t+' · Concept</span></button>'}).join('')+'</div><div class="bar"><i id="prog"></i></div></section>'+
+ '<section class="sec"><div class="stmt"><h2 class="rv">Transforming walls into experiences.</h2><p class="rv">Curated wallpapers. Exceptional textures. Beautifully transformed spaces.</p></div></section>'+
+ '<section class="sec" style="padding-top:0"><div class="lab"><span class="up">Collections</span><a class="up" href="#/collections" data-nav>All collections →</a></div><div class="idx" id="idx">'+ix+'</div></section>'+
+ '<section class="sec"><div class="lab"><span class="up">Start a project</span><span class="sm">Tell us about your site</span></div><a class="next" href="#/contact" data-nav><h2 class="rv">Let’s transform your walls.</h2></a></section>'};
+V.collections=function(){return'<div class="pgh"><h1 class="rv">Collections</h1><p class="rv">Families of wallpaper, each opening into its own set of designs.</p></div><section class="sec" style="padding-top:0"><div class="cgrid">'+CO.map(function(c,i){return'<a class="cc" href="'+wa('Hi LuxeWall, I’d like to see the '+c.n+' collection.')+'" target="_blank" rel="noopener"><div class="cv"  style="aspect-ratio:4/5">'+im(c.k,900,c.pos)+'</div><div class="meta"><h3>'+c.n+'</h3><span class="sm">'+P2(i+1)+'</span></div><p>'+c.d+'</p></a>'}).join('')+'</div></section>'};
+V.studio=function(){return'<div class="pgh"><h1 class="rv"><span class="ln"><span>Spaces begin with</span></span><span class="ln"><span>the right surface.</span></span></h1></div><section class="sec" style="padding-top:0"><div class="two"><div style="grid-column:1/6"><p class="rv" style="color:var(--mute);font-size:17px;max-width:44ch">A thoughtfully selected wallcovering can completely transform the feeling of a space. From subtle natural textures to expressive statement walls, we help create interiors that feel distinctive, considered and timeless.</p><ul class="hl rv" style="margin-top:40px"><li>Premium wallpaper curation<span>01</span></li><li>Personalised design consultation<span>02</span></li><li>Professional installation<span>03</span></li><li>Pattern and texture guidance<span>04</span></li><li>Residential and commercial<span>05</span></li></ul></div><div style="grid-column:7/13"><div class="cv" style="aspect-ratio:4/5">'+im('hall',1200)+'</div></div></div></section>'};
+V.process=function(){return'<div class="pgh"><h1 class="rv">Process</h1><p class="rv">Four calm stages, from the first conversation to the final seam.</p></div><section class="sec" style="padding-top:0">'+ST.map(function(s,i){return'<div class="stp"><div class="n rv">'+P2(i+1)+'</div><div><h3 class="rv">'+s[0]+'</h3><p class="rv">'+s[1]+'</p></div><div class="cv">'+im(s[2],900)+'</div></div>'}).join('')+'</section>'};
+V.contact=function(){return'<div class="pgh"><h1 class="rv"><span class="ln"><span>Let’s transform</span></span><span class="ln"><span>your walls.</span></span></h1><p class="rv">Have a space in mind? Let’s find the wallpaper that brings it to life.</p></div><section class="sec" style="padding-top:0"><div class="two"><form class="frm" id="frm" style="grid-column:1/8"><label>Name<input name="n" required autocomplete="name"></label><label>Phone<input name="p" type="tel" required autocomplete="tel"></label><label>Email<input name="e" type="email"></label><label>Project type<select name="t"><option>Residential</option><option>Commercial</option><option>Hospitality</option></select></label><label class="full">Message<textarea name="m"></textarea></label><div class="full"><button class="btn" type="submit" style="width:100%;max-width:340px">Start Your Project <span>→</span></button><p class="sm" style="margin-top:10px">Opens WhatsApp with your details.</p></div></form><div style="grid-column:9/13"><p class="up sm" style="margin-bottom:8px">Studio</p><p>R.S. Puram, Coimbatore<br>Tamil Nadu, India</p><p class="up sm" style="margin:28px 0 8px">Connect</p><p><a href="tel:+918147844618">+91 81478 44618</a><br><a href="mailto:info@luxewallsstudio.com">info@luxewallsstudio.com</a></p></div></div></section>'};
+V.elements=function(){return'<div class="el" id="el"><div class="elgrid" id="elgrid"></div><div class="elttl"><h1>Elements</h1><p>Textures, materials and patterns. Hover a point to open it.</p></div>'+EL.map(function(e,i){return'<button class="node" data-e="'+i+'" style="left:'+e.x+'%;top:'+e.y+'%" aria-label="'+e.l+'"><i></i><em>'+e.l+'</em></button>'}).join('')+'<div class="elnote">Index of surfaces</div></div>'};
+var CR=Object.keys(PH).map(function(k){return'<a href="https://unsplash.com/photos/'+PH[k].id+'" target="_blank" rel="noopener">'+PH[k].by+'</a>'}).join(' · ');
+function footer(){return'<footer class="ft"><div><div class="big">LUXEWALL</div><p>Wallpaper. Texture. Timeless spaces.</p></div><div><h4>Index</h4><ul><li><a href="#/collections" data-nav>Collections</a></li><li><a href="#/studio" data-nav>Studio</a></li><li><a href="#/process" data-nav>Process</a></li><li><a href="#/elements" data-nav>Elements</a></li><li><a href="#/contact" data-nav>Contact</a></li></ul></div><div><h4>Studio</h4><p>R.S. Puram, Coimbatore<br>Tamil Nadu, India<br><span class="sm">By appointment</span></p></div><div><h4>Connect</h4><ul><li><a href="mailto:info@luxewallsstudio.com">Email</a></li><li><a href="https://wa.me/'+WA+'" target="_blank" rel="noopener">WhatsApp</a></li></ul></div><div class="bot"><span>© 2026 LuxeWall Studio</span><span>Photography via Unsplash: '+CR+'</span></div></footer>'}
+
+/* ===== ROUTER ===== */
+var app=$('#app'),timers=[],busy=false,ign=false,cleanup=null;
+function route(){var h=location.hash.replace(/^#\/?/,'').split('/')[0];return V[h]?h:'home'}
+function render(){
+ timers.forEach(clearInterval);timers=[];if(cleanup){cleanup();cleanup=null}
+ var r=route();document.body.className='page-'+r+(r==='home'?' home':'');
+ app.innerHTML=V[r]()+(r==='elements'?'':footer());bind();hdr();
+ if(r==='home')hero();if(r==='elements')elements();
+ document.title=(r==='home'?'':r[0].toUpperCase()+r.slice(1)+' — ')+'LuxeWall Studio'}
+function go(h,fromHash){if(busy)return;h=h||'#/';closeAll();if(!fromHash&&(h===location.hash||(h==='#/'&&!location.hash)))return;busy=true;var c=$('#cur2');c.className='cur2 on';
+ setTimeout(function(){if(!fromHash){ign=true;location.hash=h}render();scrollTo(0,0);c.className='cur2 off';setTimeout(function(){c.className='cur2';busy=false},700)},REDUCE?0:680)}
+addEventListener('hashchange',function(){if(ign){ign=false;return}busy=false;go(location.hash,true)});
+document.addEventListener('click',function(e){var a=e.target.closest('a[data-nav]');if(a){e.preventDefault();go(a.getAttribute('href'))}});
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+function bind(){$$('.rv,.cv,.stmt h2,.pgh h1').forEach(function(el){io.observe(el)});
+ var f=$('#frm');if(f)f.onsubmit=function(e){e.preventDefault();var x=f.elements;window.open(wa('Hi LuxeWall, I’m '+x.n.value+' ('+x.p.value+(x.e.value?', '+x.e.value:'')+'). Project: '+x.t.value+'. '+x.m.value),'_blank')};
+ var pv=$('#pv');$$('.idx a[data-pv]').forEach(function(a){a.addEventListener('mouseenter',function(){var c=CO[a.dataset.pv];pv.innerHTML=im(c.k,600,c.pos,null,true);pv.classList.add('on')});a.addEventListener('mouseleave',function(){pv.classList.remove('on')})});
+ $$('.pgh').forEach(function(p){p.classList.add('in')})}
+var mx=0,my=0,cx=0,cy=0;addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+(function loop(){cx+=(mx-cx)*.18;cy+=(my-cy)*.18;var p=$('#pv');p.style.left=cx+'px';p.style.top=cy+'px';requestAnimationFrame(loop)})();
+
+/* ===== HERO: blur-bloom crossfade, tab list, progress line ===== */
+function hero(){
+ var sl=$$('.sl'),tabs=$$('.tab'),cur=0,n=sl.length,D=6500,start=Date.now(),lock=false,pg=$('#prog');
+ function show(i){if(lock||i===cur)return;lock=true;var o=sl[cur],nw=sl[i];
+  sl.forEach(function(s){s.classList.remove('out')});o.classList.remove('on');o.classList.add('out');nw.classList.add('on');
+  tabs.forEach(function(t,j){t.classList.toggle('on',j===i)});cur=i;start=Date.now();
+  setTimeout(function(){o.classList.remove('out');lock=false},REDUCE?0:1700)}
+ tabs.forEach(function(t){t.onclick=function(){show(+t.dataset.i)}});
+ var tx=0,h=$('#hero');h.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});h.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show((cur+(d<0?1:n-1))%n)});
+ var kk=function(e){if(e.key==='ArrowRight')show((cur+1)%n);if(e.key==='ArrowLeft')show((cur-1+n)%n)};document.addEventListener('keydown',kk);
+ cleanup=function(){document.removeEventListener('keydown',kk)};
+ timers.push(setInterval(function(){if(document.hidden||document.body.classList.contains('open-menu')||document.body.classList.contains('open-search'))start=Date.now();var p=Math.min(1,(Date.now()-start)/D);pg.style.transform='scaleX('+p+')';if(p>=1&&!REDUCE)show((cur+1)%n)},50));
+ if(!$('#pre').classList.contains('gone'))return;heroIn()}
+function heroIn(){var h=$('#hcopy');if(h)h.classList.add('in')}
+
+/* ===== ELEMENTS: dots → grid appears → images bloom into cells ===== */
+function elements(){
+ var el=$('#el'),grid=$('#elgrid'),cols,cell,rows,cur=-1,tid,live=[];
+ function size(){cols=innerWidth<700?6:12;cell=innerWidth/cols;rows=Math.ceil(innerHeight/cell);grid.style.backgroundSize=cell+'px '+cell+'px'}size();addEventListener('resize',size);
+ function clear(){live.forEach(function(x){x.classList.remove('in');setTimeout(function(){x.remove()},900)});live=[]}
+ function open(i){clearTimeout(tid);if(cur===i)return;clear();cur=i;el.classList.add('live');$$('.node').forEach(function(n,j){n.classList.toggle('act',j===i)});
+  var e=EL[i],taken=[],sizes=[[3,2],[2,2],[2,3],[2,2],[3,2],[1,1],[2,1]],nx=e.x/100*cols,ny=e.y/100*rows,k=0;
+  for(var t=0;t<260&&k<(cols<8?4:6);t++){var s=sizes[k%sizes.length],w=Math.min(s[0],cols-1),h=s[1],c0=Math.floor(Math.random()*(cols-w+1)),r0=Math.floor(Math.random()*(rows-h+1));
+   if(nx>=c0-1&&nx<=c0+w+1&&ny>=r0-1&&ny<=r0+h+1)continue;
+   if(r0*cell<150&&c0<4)continue;
+   if(taken.some(function(q){return c0<q[0]+q[2]+0&&c0+w>q[0]&&r0<q[1]+q[3]&&r0+h>q[1]}))continue;
+   taken.push([c0,r0,w,h]);var d=document.createElement('div');d.className='elimg';d.style.cssText='left:'+c0*cell+'px;top:'+r0*cell+'px;width:'+w*cell+'px;height:'+h*cell+'px;transition-delay:'+k*70+'ms';
+   var key=e.im[k%e.im.length];d.innerHTML=im(key,700,(20+Math.random()*60|0)+'% '+(20+Math.random()*60|0)+'%',1+Math.random()*.5,true);el.insertBefore(d,el.firstChild.nextSibling);live.push(d);
+   (function(d){requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in')})})})(d);k++}}
+ function close(){tid=setTimeout(function(){clear();cur=-1;el.classList.remove('live');$$('.node').forEach(function(n){n.classList.remove('act')})},350)}
+ $$('.node').forEach(function(nd){var i=+nd.dataset.e;nd.addEventListener('mouseenter',function(){open(i)});nd.addEventListener('mouseleave',close);nd.addEventListener('click',function(){cur===i?(close()):open(i)})});
+ var rs=size;cleanup=function(){removeEventListener('resize',rs)}}
+
+/* ===== MENU / SEARCH ===== */
+var NAVS=[['Work','#/'],['Collections','#/collections'],['Studio','#/studio'],['Process','#/process'],['Elements','#/elements'],['Contact','#/contact']];
+$('#snav').innerHTML=NAVS.map(function(n){return'<a href="'+n[1]+'" data-nav>'+n[0]+'</a>'}).join('')+'<button id="sNav">Search</button>';
+$('#sNav').onclick=function(){closeAll();setTimeout(function(){openSearch()},400)};
+function hdr(){var r=route(),ov=document.body.classList.contains('open-search')||document.body.classList.contains('open-menu');var ink=document.body.classList.contains('open-search')||(r!=='home')||scrollY>innerHeight*.85;if(document.body.classList.contains('open-menu')&&r==='home')ink=false;if(document.body.classList.contains('open-menu'))ink=true;$('#hd').classList.toggle('ink',ink);document.body.classList.toggle('past',scrollY>innerHeight*.85)}
+addEventListener('scroll',hdr,{passive:true});
+function closeAll(){document.body.classList.remove('open-menu','open-search');document.body.style.overflow='';$('#bMenu').setAttribute('aria-expanded','false');hdr()}
+function openMenu(){closeAll();document.body.classList.add('open-menu');$('#bMenu').setAttribute('aria-expanded','true');hdr()}
+function openSearch(){closeAll();document.body.classList.add('open-search');document.body.style.overflow='hidden';hdr();setTimeout(function(){$('#q').focus()},500);doSearch()}
+$('#bMenu').onclick=function(){document.body.classList.contains('open-menu')||document.body.classList.contains('open-search')?closeAll():openMenu()};
+$('#bSearch').onclick=function(){document.body.classList.contains('open-search')?closeAll():openSearch()};
+$('#shade').onclick=closeAll;
+function doSearch(){var q=$('#q').value.trim().toLowerCase();var out=CO.filter(function(c){return!q||(c.n+' '+c.d).toLowerCase().indexOf(q)>-1});
+ $('#res').innerHTML=out.length?out.map(function(c){return'<a href="#/collections" data-nav><div class="ph">'+im(c.k,500,c.pos,null,true)+'</div><p>'+c.n+'<small>Collection</small></p></a>'}).join(''):'<p class="sm">No results for “'+q+'”.</p>'}
+$('#q').addEventListener('input',doSearch);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();if(e.key==='/'&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();openSearch()}});
+
+/* ===== PRELOADER ===== */
+(function(){var c=0,el=$('#cnt'),pre=$('#pre');render();document.body.style.overflow='hidden';
+ var iv=setInterval(function(){c+=Math.ceil(Math.random()*9)+3;if(c>=100){c=100;clearInterval(iv);setTimeout(function(){pre.classList.add('done');pre.classList.add('gone');document.body.style.overflow='';heroIn()},REDUCE?0:250)}el.textContent=String(c).padStart(3,'0')},REDUCE?1:50)})();
+</script></body></html>
